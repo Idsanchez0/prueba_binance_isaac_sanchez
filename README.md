@@ -5,10 +5,10 @@
 - Las credenciales de binance ya se encuentran en el aplicativo y no requieren ser declaradas.
 - Verificar que se encuentran actualizados el sistema operativo y Xcode en caso de MacOS.
 - Se ha utilizado la metodología a tomic design para crear y diseñar los componenetes gráficos del aplicativo.
-# Comandos para correr antes de ejecutar el app
+# Comandos para de ejecutar  de correr el app
 - flutter clean
 - flutter pub get
-# Comando para ejecutar el programa
+# Comando para correr el app
 - flutter run
 # Descripción
 - El presente proyecto es una prueba de desarrollo utilizando el API de binance, adicionalmente se utilizó providers para el manejo de la información.
