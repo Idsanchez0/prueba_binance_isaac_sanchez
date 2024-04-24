@@ -38,8 +38,9 @@ class _SymbolCard extends State<SymbolCard> {
       child: Table(
         columnWidths: const {
           0: FlexColumnWidth(3),
-          1: FlexColumnWidth(7),
+          1: FlexColumnWidth(6),
           2: FlexColumnWidth(6),
+          3: FlexColumnWidth(2),
         },
         children: [
           TableRow(children: [
@@ -63,7 +64,14 @@ class _SymbolCard extends State<SymbolCard> {
                     title: '\$ ${widget.price}',
                     color: widget.colorText,
                     align: TextAlign.start,
-                    fontWeight: FontWeight.normal))
+                    fontWeight: FontWeight.normal)),
+            TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Icon(
+                  PhosphorIcons.chartLineUp(),
+                  color: widget.colorText,
+                  size: 8 * SizeConfig.imageSizeMultiplier,
+                )),
           ])
         ],
       ),

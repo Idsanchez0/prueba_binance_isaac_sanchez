@@ -54,12 +54,14 @@ class Routes {
   }
 
   ///Charts
-  void chartsPage({required context}) {
+  void chartsPage({required context, required page}) {
     Navigator.push(
         context,
         PageTransition(
             type: PageTransitionType.fade,
-            child: const ChartsPage(),
+            child: ChartsPage(
+              page: page,
+            ),
             duration: const Duration(milliseconds: 200)));
   }
 

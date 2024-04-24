@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_binance_isaac_sanchez/core/ui/design/templates/cards/symbol_card.dart';
+import 'package:prueba_binance_isaac_sanchez/core/ui/utils/routes/routes.dart';
 
 import '../../../core/ui/utils/paths/colors_utils.dart';
 import '../../../core/ui/utils/size/size_config.dart';
@@ -23,13 +24,17 @@ class _MainExploreList extends State<MainExploreList> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
-              return SymbolCard(
-                title: widget.data[index]['symbol'],
-                price: widget.data[index]['bidPrice'],
-                border: colors.primary500,
-                color: (index % 2) == 0 ? Colors.white : colors.primary500,
-                colorText: (index % 2) == 0 ? colors.primary500 : Colors.white,
-              );
+              return GestureDetector(
+                  onTap: () => routes.chartsPage(
+                      context: context, page: widget.data[index]['symbol']),
+                  child: SymbolCard(
+                    title: widget.data[index]['symbol'],
+                    price: widget.data[index]['bidPrice'],
+                    border: colors.primary500,
+                    color: (index % 2) == 0 ? Colors.white : colors.primary500,
+                    colorText:
+                        (index % 2) == 0 ? colors.primary500 : Colors.white,
+                  ));
             }));
   }
 }

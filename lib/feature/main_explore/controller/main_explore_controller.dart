@@ -11,7 +11,7 @@ class MainExploreController {
   final BuildContext context;
   MainExploreController(this.context);
 
-  Future<dynamic> getListSymbols() async {
+  Future<bool> getListSymbols() async {
     var dataProvider = Provider.of<DataProvider>(context, listen: false);
     dataProvider.setDataSymbols(null);
     final String url = '${network.urlBackend}/api/v3/ticker/bookTicker';
@@ -26,12 +26,13 @@ class MainExploreController {
     try {
       if (response.statusCode == 200) {
         var responseData = json.decode(response.body);
-        return responseData;
+        dataProvider.setDataSymbols(responseData);
+        return true;
       } else {
-        return null;
+        return false;
       }
     } catch (e) {
-      return null;
+      return false;
     }
   }
 }

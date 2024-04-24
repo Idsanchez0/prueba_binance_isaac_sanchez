@@ -11,7 +11,7 @@ class DataProvider extends ChangeNotifier {
   }
 
   void setDataSymbols(dynamic newData) {
-    dataUser = newData;
+    dataSymbols = newData;
     notifyListeners();
   }
 }

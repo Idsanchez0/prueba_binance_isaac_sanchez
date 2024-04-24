@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:provider/provider.dart';
 import 'package:prueba_binance_isaac_sanchez/core/ui/design/templates/footers/footer.dart';
 import 'package:prueba_binance_isaac_sanchez/core/ui/design/templates/headers/main_explore_header.dart';
 import 'package:prueba_binance_isaac_sanchez/core/ui/utils/paths/images_utils.dart';
@@ -8,6 +9,7 @@ import 'package:prueba_binance_isaac_sanchez/feature/main_explore/widgets/main_e
 
 import '../../../../core/ui/utils/routes/routes.dart';
 import '../../../../core/ui/utils/size/size_config.dart';
+import '../../../core/provider/data_provider.dart';
 import '../../../core/ui/design/atoms/text_fields/custom_search_field.dart';
 import '../../../core/ui/design/templates/loader/loader.dart';
 import '../../../core/ui/design/templates/modals/middle_modal_template.dart';
@@ -35,15 +37,17 @@ class _MainExplorePage extends State<MainExplorePage> {
   }
 
   getData(context) async {
+    var dataProvider = Provider.of<DataProvider>(context, listen: false);
     await Future.delayed(Duration.zero);
     loading();
     dynamic symbols = await MainExploreController(context).getListSymbols();
-    if (symbols != null) {
+    if (symbols) {
       setState(() {
-        listSymbols = symbols;
+        listSymbols = dataProvider.dataSymbols;
+        filteredOrderSymbols = listSymbols;
       });
-      searchController.addListener(_onSearchSymbolsChanged);
-    } else {}
+    }
+    searchController.addListener(_onSearchSymbolsChanged);
     Navigator.pop(context);
   }
 
@@ -52,7 +56,7 @@ class _MainExplorePage extends State<MainExplorePage> {
       String searchText = searchController.text.toLowerCase();
       List<Map<String, dynamic>> convertedList =
           List<Map<String, dynamic>>.from(listSymbols);
-      listSymbols = convertedList
+      filteredOrderSymbols = convertedList
           .where((item) => item['symbol'].toLowerCase().contains(searchText))
           .toList();
     });
@@ -105,7 +109,7 @@ class _MainExplorePage extends State<MainExplorePage> {
                                 height: 3 * SizeConfig.heightMultiplier,
                               ),
                               MainExploreList(
-                                data: listSymbols,
+                                data: filteredOrderSymbols,
                               )
                             ],
                           )),

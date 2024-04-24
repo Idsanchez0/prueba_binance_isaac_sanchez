@@ -72,27 +72,6 @@ class _Footer extends State<Footer> {
                 child: Column(
               children: [
                 GestureDetector(
-                    onTap: () => routes.chartsPage(context: context),
-                    child: Icon(
-                      PhosphorIcons.chartLineUp(),
-                      color: widget.page == 'chart'
-                          ? colors.primary500
-                          : colors.neutral500,
-                      size: 7 * SizeConfig.imageSizeMultiplier,
-                    )),
-                XsmP(
-                    title: textsGlobal.charts,
-                    color: widget.page == 'chart'
-                        ? colors.primary500
-                        : colors.neutral500,
-                    align: TextAlign.center,
-                    fontWeight: FontWeight.normal)
-              ],
-            )),
-            TableCell(
-                child: Column(
-              children: [
-                GestureDetector(
                     onTap: () => routes.informationPage(context: context),
                     child: Icon(
                       PhosphorIcons.info(),
