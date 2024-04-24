@@ -4,6 +4,7 @@
 - Utilizar la versión 3.19 de flutter.
 - Las credenciales de binance ya se encuentran en el aplicativo y no requieren ser declaradas.
 - Verificar que se encuentran actualizados el sistema operativo y Xcode en caso de MacOS.
+- Se ha utilizado la metodología a tomic design para crear y diseñar los componenetes gráficos del aplicativo.
 # Comandos para correr antes de ejecutar el app
 - flutter clean
 - flutter pub get
